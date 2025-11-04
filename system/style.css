@@ -1,0 +1,93 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #74ABE2, #5563DE);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container form */
+form {
+    background-color: #fff;
+    width: 400px;
+    margin: 50px auto;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* Title */
+h1 {
+    text-align: center;
+    margin-top: 40px;
+    color: #fff;
+    font-size: 2rem;
+    letter-spacing: 1px;
+}
+
+/* Labels */
+label {
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+/* Input fields */
+input[type="text"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    box-sizing: border-box;
+    transition: 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus {
+    border-color: #5563DE;
+    outline: none;
+    box-shadow: 0 0 6px rgba(85,99,222,0.4);
+}
+
+/* Textarea */
+textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+/* Button */
+button {
+    width: 100%;
+    background-color: #5563DE;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #4051c6;
+}
+
+/* Output */
+#output {
+    margin: 30px auto;
+    width: 80%;
+    max-width: 600px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: left;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    white-space: pre-wrap;
+}

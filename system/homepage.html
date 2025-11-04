@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home Page</title>
+    <link rel="stylesheet" href="hstyle.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Community Portal</h1>
+        <p class="subtitle">Welcome! Please choose an option below:</p>
+
+        <form id="homeForm">
+            <button type="button" onclick="openSection('reporrt.html')">Report</button>
+            <button type="button" onclick="openSection('information.html')">Information</button>
+            <button type="button" onclick="openSection('about.html')">About</button>
+        </form>
+    </div>
+
+    <script>
+        function openSection(page) {
+            // This function redirects to the selected section
+            window.location.href = page;
+        }
+    </script>
+</body>
+</html>
