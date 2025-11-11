@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="adminstyle.css">
+</head>
+<body>
+    <h1>Admin Report Dashboard</h1>
+
+    <div class="search-filter-container">
+        <input type="text" id="globalSearch" placeholder="Search by Name..." oninput="filterReports()" />
+
+        <select id="reportTypeFilter" onchange="filterReports()">
+            <option value="">Filter by Report Type</option>
+            <option value="Noise Complaint">Noise Complaint</option>
+            <option value="Garbage Problem">Garbage or Improper Waste Disposal</option>
+            <option value="Boundary Dispute">Boundary or Trespassing Dispute</option>
+            <option value="Public Disturbance">Public Disturbance or Drunkenness</option>
+            <option value="Domestic Violence">Domestic Violence or Family Quarrel</option>
+            <option value="Child Support">Child Support or Neglect</option>
+            <option value="Unsanitary Conditions">Unsanitary Living Conditions</option>
+            <option value="Stray Animals">Stray or Nuisance Animals</option>
+            <option value="Vandalism Theft">Vandalism or Petty Theft</option>
+            <option value="Curfew Violation">Curfew Violation</option>
+            <option value="Road Drainage">Road or Drainage Problem</option>
+            <option value="Streetlight Issue">Broken or Missing Streetlight</option>
+            <option value="Suspicious Activity">Suspicious Person or Activity</option>
+            <option value="Lost Found">Lost and Found Report</option>
+            <option value="Other">Other</option>
+            <option value="Urgent">Urgent Reports</option>
+        </select>
+    </div>
+
+    <h2>Pending Reports</h2>
+    <table id="pendingTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Complaint Type</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Urgency</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="pendingReports">
+        </tbody>
+    </table>
+
+    <h2>On Progress Reports</h2>
+    <table id="inProgressTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Complaint Type</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Urgency</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="inProgressReports">
+        </tbody>
+    </table>
+
+    <h2>Solved Reports</h2>
+    <table id="solvedTable">
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Complaint Type</th>
+                <th>Description</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Status</th>
+                <th>Urgency</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="solvedReports">
+        </tbody>
+    </table>
+
+    <script>
+        const DB_KEY = "record";
+        let db = JSON.parse(localStorage.getItem(DB_KEY)) || [];
+
+        function displayReports(filteredReports = db) {
+            const pendingReports = document.getElementById("pendingReports");
+            const inProgressReports = document.getElementById("inProgressReports");
+            const solvedReports = document.getElementById("solvedReports");
+
+            pendingReports.innerHTML = "";
+            inProgressReports.innerHTML = "";
+            solvedReports.innerHTML = "";
+
+            filteredReports.forEach((report, index) => {
+                const isUrgent = ["Boundary Dispute", "Public Disturbance", "Domestic Violence", "Curfew Violation", "Suspicious Activity"].includes(report.category);
+                
+                const row = `
+                    <tr class="${isUrgent ? 'urgent' : ''}">
+                        <td>${report.first_name}</td>
+                        <td>${report.last_name}</td>
+                        <td>${report.category}</td>
+                        <td>${report.description ? report.description : 'No Description'}</td>
+                        <td>${report.date_time.split(",")[0]}</td>
+                        <td>${report.date_time.split(",")[1]}</td>
+                        <td>
+                            <select id="status-${index}" onchange="updateStatus(${index})">
+                                <option value="Pending" ${report.status === "Pending" ? "selected" : ""} ${report.status !== "Pending" ? "disabled" : ""}>Pending</option>
+                                <option value="On Progress" ${report.status === "On Progress" ? "selected" : ""} ${report.status === "Solved" ? "disabled" : ""} ${report.status === "Pending" ? "" : "disabled"}>On Progress</option>
+                                <option value="Solved" ${report.status === "Solved" ? "selected" : ""} ${report.status === "On Progress" ? "" : "disabled"}>Solved</option>
+                            </select>
+                        </td>
+                        <td>${isUrgent ? 'URGENT' : 'Not Urgent'}</td>
+                        <td><button onclick="deleteReport(${index})">Delete</button></td>
+                    </tr>
+                `;
+
+                if (report.status === "Pending") {
+                    pendingReports.innerHTML += row;
+                } else if (report.status === "On Progress") {
+                    inProgressReports.innerHTML += row;
+                } else if (report.status === "Solved") {
+                    solvedReports.innerHTML += row;
+                }
+            });
+        }
+
+        function updateStatus(index) {
+            const status = document.getElementById(`status-${index}`).value;
+            db[index].status = status;
+            localStorage.setItem(DB_KEY, JSON.stringify(db));
+            displayReports();
+        }
+
+        function deleteReport(index) {
+            const confirmDelete = confirm("Are you sure you want to delete this report?");
+            if (confirmDelete) {
+                db.splice(index, 1);
+                localStorage.setItem(DB_KEY, JSON.stringify(db));
+                displayReports();
+            }
+        }
+
+        function filterReports() {
+            const searchTerm = document.getElementById("globalSearch").value.toLowerCase();
+            const selectedType = document.getElementById("reportTypeFilter").value;
+
+            const filteredReports = db.filter(report => {
+                const matchesSearch = `${report.first_name} ${report.last_name}`.toLowerCase().includes(searchTerm);
+                const matchesType = selectedType ? (selectedType === 'Urgent' ? 
+                    ["Boundary Dispute", "Public Disturbance", "Domestic Violence", "Curfew Violation", "Suspicious Activity"].includes(report.category) :
+                    report.category === selectedType) : true;
+                return matchesSearch && matchesType;
+            });
+
+            displayReports(filteredReports);
+        }
+
+        displayReports();
+    </script>
+</body>
+</html>

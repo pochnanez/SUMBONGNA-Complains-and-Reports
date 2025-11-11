@@ -1,0 +1,251 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom right, #63a7e38e, #0d7ec094);
+    color: #333;
+    padding: 40px 20px;
+    text-align: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.8em;
+    color: #007bff;
+    margin-top: 40px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.search-filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+#globalSearch {
+    padding: 12px;
+    font-size: 16px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+}
+
+#globalSearch:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+#reportTypeFilter {
+    padding: 12px;
+    font-size: 16px;
+    width: 250px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+}
+
+#reportTypeFilter:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+th {
+    padding: 15px;
+    text-align: left;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    font-size: 0.9em;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+td {
+    background-color: #f9f9f9;
+}
+
+.urgent {
+    background-color: #ffcc00;
+    font-weight: bold;
+    color: red;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.popup-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.popup-content h2 {
+    color: #28a745;
+    font-size: 1.5em;
+}
+
+.popup-content button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.popup-content button:hover {
+    background-color: #218838;
+}
+
+button[type="button"] {
+    background-color: #f44336;
+    margin-top: 20px;
+}
+
+button[type="button"]:hover {
+    background-color: #d32f2f;
+}
+
+button[type="submit"] {
+    background-color: #007bff;
+    margin-top: 20px;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+select option[value="Pending"] {
+    background-color: #ffc107;
+    color: black;
+}
+
+select option[value="On Progress"] {
+    background-color: #17a2b8;
+    color: white;
+}
+
+select option[value="Solved"] {
+    background-color: #28a745;
+    color: white;
+}
+
+select option[value="Other"] {
+    background-color: #6c757d;
+    color: white;
+}
+
+table + table {
+    margin-top: 40px;
+}
+
+footer {
+    margin-top: 50px;
+    font-size: 0.8em;
+    color: #777;
+    text-align: center;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .search-filter-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #globalSearch, #reportTypeFilter {
+        width: 80%;
+    }
+
+    table {
+        width: 100%;
+    }
+}
