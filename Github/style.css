@@ -1,0 +1,213 @@
+/* General Body Styling */
+body {
+    text-align: center;
+    font-family: "Poppins", Arial, sans-serif;
+    background: linear-gradient(to bottom right, #63a7e38e, #0d7ec094); /* Gradient background */
+    margin: 0;
+    padding: 0;
+}
+
+/* Main Title */
+h1 {
+    color: #0d47a1;
+    margin-top: 40px;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+/* Form Styling */
+form {
+    background: #fff;
+    display: inline-block;
+    padding: 30px 50px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+    text-align: left;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Label Styling */
+label {
+    font-weight: bold;
+    color: #0d47a1;
+    font-size: 1.1em;
+}
+
+/* Input, Select, Textarea Styling */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+/* Button Container */
+.button-container {
+    text-align: center; /* center buttons */
+    margin-top: 20px;
+}
+
+.button-container button {
+    background-color: #1565c0;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-size: 1em;
+    cursor: pointer;
+    margin: 0 10px; /* space between buttons */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button-container button:hover {
+    background-color: #0d47a1;
+    transform: scale(1.05);
+}
+
+/* Popup Modal */
+.popup {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    animation: fadeIn 0.3s ease;
+}
+
+.popup-content h2 {
+    color: #1565c0;
+}
+
+.popup-content button {
+    margin-top: 15px;
+    padding: 10px 25px;
+    background: #1565c0;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.popup-content button:hover {
+    background: #0d47a1;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
+}
+
+/* Highlight URGENT Reports */
+.urgent {
+    background-color: #ffcc00; /* Yellow background */
+    font-weight: bold;
+    color: red; /* Red text for urgent reports */
+}
+
+/* Table Styling for Admin */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    font-size: 0.9em;
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Status Dropdown */
+select {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* URGENT Report Styling */
+.urgent-report {
+    background-color: #ffcc00; /* Highlight URGENT Reports */
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+/* Action Buttons */
+button {
+    padding: 8px 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    form {
+        width: 90%;
+        max-width: none;
+    }
+
+    .search-filter-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    #globalSearch, #reportTypeFilter {
+        width: 80%;
+    }
+
+    table {
+        width: 100%;
+    }
+}

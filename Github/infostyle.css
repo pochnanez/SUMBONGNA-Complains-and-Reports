@@ -1,0 +1,98 @@
+/* ===== General Page Setup ===== */
+body {
+    font-family: "Poppins", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom right, #63a7e38e, #0d7ec094);
+    color: #333;
+}
+
+/* ===== Centered Header and Paragraph ===== */
+h1 {
+    text-align: center;
+    font-size: 2.8em;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    color: #0d47a1;
+    letter-spacing: 1px;
+}
+
+body > p {
+    text-align: center;
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 40px;
+}
+
+/* ===== Card Styles ===== */
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 25px;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== Section Highlights ===== */
+.highlight {
+    border-left: 6px solid #1565c0;
+}
+
+.highlight-light {
+    border-left: 6px solid #64b5f6;
+}
+
+/* ===== Sub-cards ===== */
+.sub-card {
+    background: #f9fbfc;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-top: 15px;
+}
+
+.sub-card h3 {
+    color: #1565c0;
+    margin-bottom: 5px;
+}
+
+.sub-card p, .sub-card ul {
+    margin: 5px 0;
+    color: #444;
+}
+
+/* ===== Lists ===== */
+ul {
+    list-style-type: square;
+    padding-left: 25px;
+}
+
+/* ===== Back Button ===== */
+.back-btn {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.back-btn button {
+    background-color: #1565c0;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.back-btn button:hover {
+    background-color: #0d47a1;
+    transform: scale(1.05);
+}
